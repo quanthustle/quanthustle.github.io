@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantHustle</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #dd2429;
+            --dark-red: #d02329;
+            --darker-red: #69191c;
+            --light-gray: #ededed;
+            --medium-gray: #6c6c6c;
+            --black: #000000;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--black);
+            color: var(--black);
+        }
+        
+        .bg-primary { background-color: var(--primary-red); }
+        .bg-dark-red { background-color: var(--dark-red); }
+        .bg-darker-red { background-color: var(--darker-red); }
+        .bg-light-gray { background-color: var(--light-gray); }
+        .text-primary { color: var(--primary-red); }
+        .text-dark-red { color: var(--dark-red); }
+        .text-darker-red { color: var(--darker-red); }
+        .text-medium-gray { color: var(--medium-gray); }
+        .border-primary { border-color: var(--primary-red); }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--darker-red) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(221, 36, 41, 0.3);
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 3px rgba(221, 36, 41, 0.1);
+        }
+        
+        .ebook-image {
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+        }
+        
+        .navbar-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-link:hover {
+            color: var(--primary-red);
+        }
+        
+        .navbar-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            background-color: var(--primary-red);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .navbar-link:hover::after {
+            width: 100%;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <img src="icon.png" alt="QuantHustle" class="w-8 h-8 mr-3">
+                    <span class="text-2xl font-bold text-black cursor-pointer" onclick="location.href = 'https://www.quanthustle.com';">QuantHustle</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="navbar-link text-medium-gray hover:text-primary font-medium" onclick="location.href = 'https://www.quanthustle.com';">Home</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-medium-gray hover:text-primary" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu md:hidden bg-white border-t border-gray-200">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#" class="block px-3 py-2 text-medium-gray hover:text-primary font-medium" onclick="location.href = 'https://www.quanthustle.com'; toggleMobileMenu()">Home</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero-gradient py-16 lg:py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Desktop Layout -->
+                <div class="hidden lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                    <!-- Left: Form -->
+                    <div class="space-y-8">
+                        <div>
+                            <h1 class="text-5xl xl:text-6xl font-bold text-black leading-tight mb-6">
+                                <span class="text-primary text-2xl block mb-2">SECRETS UNLEASHED</span>
+                                Build Capital for Quant Trading 
+                                <span class="text-primary">WITHOUT</span> 
+                                Losing Your Money
+                            </h1>
+                        </div>
+                        
+                        <!-- Form -->
+                        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+                            <h3 class="text-2xl font-bold text-black mb-6 text-center">
+                                Get Your FREE Guide Now
+                            </h3>
+                            <!--
+                            <form class="space-y-4" onsubmit="handleSubmit(event)">
+                            -->
+                            <form class="space-y-4" id="sib-form" method="POST" action="https://742bfa57.sibforms.com/serve/MUIFAMfjq4GH_IbUzMo-MMyAJ_0IGpbrGpqyh0LgFpO3zeLMlhCJz0t_vc5i7WcaXJagpr3WEDbyslM99Td56i_MqPM13Y5a88eDQKKU4PGpaKEPAQFOx6SHeqrEV4qOuvNRwRMt0dGJW_EphuboigOF_TyCriOyJOWin7EueY1xSgiW-kuN-s7vz6eXc0MKhZSpcTg6vEvQa4fz">
+                                <div>
+                                    <label for="name" class="block text-sm font-semibold text-black mb-2">
+                                        Name <span class="text-red-500">*</span>
+                                    </label>
+                                    <!--
+                                        <input class="form-input" class="form-input"  maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" placeholder="Name" data-required="true" required />
+                                    -->
+                                    <input 
+                                        type="text" 
+                                        id="name" 
+                                        name="FIRSTNAME" 
+                                        required
+                                        maxlength="200"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none bg-white"
+                                        placeholder="Enter your name"
+                                    >
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold text-black mb-2">
+                                        Email <span class="text-red-500">*</span>
+                                    </label>
+                                    <!--
+                                    <input class="form-input" type="email" id="email" name="EMAIL" autocomplete="off" placeholder="Email" data-required="true" required />
+                                    -->
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="EMAIL" 
+                                        required
+                                        autocomplete="off"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none bg-white"
+                                        placeholder="Enter your email"
+                                    >
+                                </div>
+                                <button 
+                                    type="submit" 
+                                    class="btn-primary w-full py-4 px-8 text-white font-bold text-lg rounded-lg focus:outline-none focus:ring-4 focus:ring-red-200"
+                                >
+                                    <i class="fas fa-download mr-2"></i>
+                                    Download FREE Guide
+                                </button>
+                            </form>
+                            <p class="text-xs text-medium-gray text-center mt-4">
+                                <i class="fas fa-lock mr-1"></i>
+                                Your information is 100% secure and will never be shared.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Image -->
+                    <div class="flex justify-center">
+                        <img src="ebook_cover.png" alt="How To Build Capital For Quant Trading Guide" class="ebook-image max-w-md w-full">
+                    </div>
+                </div>
+                
+                <!-- Mobile Layout -->
+                <div class="lg:hidden space-y-12">
+                    <!-- Top: Image -->
+                    <div class="flex justify-center">
+                        <img src="ebook_cover.png" alt="How To Build Capital For Quant Trading Guide" class="ebook-image max-w-sm w-full">
+                    </div>
+                    
+                    <!-- Bottom: Form -->
+                    <div class="space-y-8">
+                        <div class="text-center">
+                            <h1 class="text-4xl font-bold text-black leading-tight mb-4">
+                                <span class="text-primary text-2xl block mb-2">SECRETS UNLEASHED</span>
+                                Build Capital for Quant Trading 
+                                <span class="text-primary">WITHOUT</span> 
+                                Losing Your Money
+                            </h1>
+                        </div>
+                        
+                        <!-- Form -->
+                        <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
+                            <h3 class="text-xl font-bold text-black mb-6 text-center">
+                                Get Your FREE Guide Now
+                            </h3>
+                            <!--
+                            <form class="space-y-4" onsubmit="handleSubmit(event)">
+                            -->
+                            <form class="space-y-4" id="sib-form" method="POST" action="https://742bfa57.sibforms.com/serve/MUIFAMfjq4GH_IbUzMo-MMyAJ_0IGpbrGpqyh0LgFpO3zeLMlhCJz0t_vc5i7WcaXJagpr3WEDbyslM99Td56i_MqPM13Y5a88eDQKKU4PGpaKEPAQFOx6SHeqrEV4qOuvNRwRMt0dGJW_EphuboigOF_TyCriOyJOWin7EueY1xSgiW-kuN-s7vz6eXc0MKhZSpcTg6vEvQa4fz">
+                                <div>
+                                    <label for="name-mobile" class="block text-sm font-semibold text-black mb-2">
+                                        Name <span class="text-red-500">*</span>
+                                    </label>
+                                    <!--
+                                        <input class="form-input" class="form-input"  maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" placeholder="Name" data-required="true" required />
+                                    -->
+                                    <input 
+                                        type="text" 
+                                        id="name-mobile" 
+                                        name="FIRSTNAME" 
+                                        required
+                                        maxlength="200"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none bg-white"
+                                        placeholder="Enter your name"
+                                    >
+                                </div>
+                                <div>
+                                    <label for="email-mobile" class="block text-sm font-semibold text-black mb-2">
+                                        Email <span class="text-red-500">*</span>
+                                    </label>
+                                    <!--
+                                    <input 
+                                        type="email" 
+                                        id="email-mobile" 
+                                        name="email" 
+                                        required
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none bg-white"
+                                        placeholder="Enter your email address"
+                                    >
+                                    -->
+                                    <input 
+                                        type="email" 
+                                        id="email-mobile" 
+                                        name="EMAIL" 
+                                        required
+                                        autocomplete="off"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none bg-white"
+                                        placeholder="Enter your email"
+                                    >
+                                </div>
+                                <button 
+                                    type="submit" 
+                                    class="btn-primary w-full py-4 px-8 text-white font-bold text-lg rounded-lg focus:outline-none focus:ring-4 focus:ring-red-200"
+                                >
+                                    <i class="fas fa-download mr-2"></i>
+                                    Download FREE Guide
+                                </button>
+                            </form>
+                            <p class="text-xs text-medium-gray text-center mt-4">
+                                <i class="fas fa-lock mr-1"></i>
+                                Your information is 100% secure and will never be shared.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Terms & Conditions Page -->
+    <div id="terms-page" class="page-section">
+        <section class="py-16 lg:py-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white p-8 lg:p-12 rounded-2xl shadow-xl border border-gray-100">
+                    <h1 class="text-4xl font-bold text-black mb-8">Terms & Conditions</h1>
+                    
+                    <div class="space-y-6 text-medium-gray leading-relaxed">
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">1. Acceptance of Terms</h2>
+                            <p>By accessing and using QuantHustle's website and services, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">2. Use License</h2>
+                            <p>Permission is granted to temporarily download one copy of the materials on QuantHustle's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.</p>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">3. Disclaimer</h2>
+                            <p>The materials on QuantHustle's website are provided on an 'as is' basis. QuantHustle makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">4. Investment Disclaimer</h2>
+                            <p>The information provided by QuantHustle is for educational purposes only and should not be considered as financial advice. Trading and investing involve substantial risk of loss and is not suitable for every investor. Past performance does not guarantee future results.</p>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">5. Limitations</h2>
+                            <p>In no event shall QuantHustle or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on QuantHustle's website.</p>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">6. Modifications</h2>
+                            <p>QuantHustle may revise these terms of service for its website at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-8 border-t border-gray-200">
+                        <button 
+                            onclick="location.href = 'https://www.quanthustle.com/';" 
+                            class="text-primary hover:text-dark-red font-semibold underline"
+                        >
+                            ← Back to Home
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Privacy Policy Page -->
+    <div id="privacy-page" class="page-section">
+        <section class="py-16 lg:py-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white p-8 lg:p-12 rounded-2xl shadow-xl border border-gray-100">
+                    <h1 class="text-4xl font-bold text-black mb-8">Privacy Policy</h1>
+                    
+                    <div class="space-y-6 text-medium-gray leading-relaxed">
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">Information We Collect</h2>
+                            <p>We collect information you provide directly to us, such as when you create an account, subscribe to our newsletter, or contact us. This may include your name, email address, and other contact information.</p>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">How We Use Your Information</h2>
+                            <p>We use the information we collect to:</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Provide, maintain, and improve our services</li>
+                                <li>Send you educational content and updates</li>
+                                <li>Respond to your comments and questions</li>
+                                <li>Communicate with you about our services</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">Information Sharing</h2>
+                            <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this privacy policy. We may share your information with trusted third parties who assist us in operating our website and conducting our business.</p>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">Data Security</h2>
+                            <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet is 100% secure.</p>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">Cookies</h2>
+                            <p>We use cookies to enhance your experience on our website. Cookies are small files that a site or its service provider transfers to your computer's hard drive through your web browser that enables recognition of your browser and capture of certain information.</p>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">Your Rights</h2>
+                            <p>You have the right to access, update, or delete your personal information. You may also opt out of receiving marketing communications from us at any time by following the unsubscribe instructions in our emails.</p>
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-2xl font-semibold text-black mb-4">Contact Us</h2>
+                            <p>If you have any questions about this Privacy Policy, please contact us through our website or email.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-8 border-t border-gray-200">
+                        <button 
+                            onclick="location.href = 'https://www.quanthustle.com/';" 
+                            class="text-primary hover:text-dark-red font-semibold underline"
+                        >
+                            ← Back to Home
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-medium-gray text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="icon.png" alt="QuantHustle" class="w-8 h-8 mr-3 filter">
+                        <span class="text-2xl font-bold">QuantHustle</span>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        Unleash Your Trading Potential with Proven Strategies! Start Your Quant Trading Journey to Success Today!
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300" onclick="location.href = 'https://www.quanthustle.com/tnc.html';">
+                                Terms & Conditions
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300" onclick="location.href = 'https://www.quanthustle.com/privacy.html';">
+                                Privacy Policy
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.threads.com/@quanthustle" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-300">
+                        <style>
+                            .st0 { fill: #ededed; }
+                            svg { width: 20px; height: 20px; }
+                        </style>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path class="st0" d="M331.5 235.7c2.2 .9 4.2 1.9 6.3 2.8c29.2 14.1 50.6 35.2 61.8 61.4c15.7 36.5 17.2 95.8-30.3 143.2c-36.2 36.2-80.3 52.5-142.6 53h-.3c-70.2-.5-124.1-24.1-160.4-70.2c-32.3-41-48.9-98.1-49.5-169.6V256v-.2C17 184.3 33.6 127.2 65.9 86.2C102.2 40.1 156.2 16.5 226.4 16h.3c70.3 .5 124.9 24 162.3 69.9c18.4 22.7 32 50 40.6 81.7l-40.4 10.8c-7.1-25.8-17.8-47.8-32.2-65.4c-29.2-35.8-73-54.2-130.5-54.6c-57 .5-100.1 18.8-128.2 54.4C72.1 146.1 58.5 194.3 58 256c.5 61.7 14.1 109.9 40.3 143.3c28 35.6 71.2 53.9 128.2 54.4c51.4-.4 85.4-12.6 113.7-40.9c32.3-32.2 31.7-71.8 21.4-95.9c-6.1-14.2-17.1-26-31.9-34.9c-3.7 26.9-11.8 48.3-24.7 64.8c-17.1 21.8-41.4 33.6-72.7 35.3c-23.6 1.3-46.3-4.4-63.9-16c-20.8-13.8-33-34.8-34.3-59.3c-2.5-48.3 35.7-83 95.2-86.4c21.1-1.2 40.9-.3 59.2 2.8c-2.4-14.8-7.3-26.6-14.6-35.2c-10-11.7-25.6-17.7-46.2-17.8H227c-16.6 0-39 4.6-53.3 26.3l-34.4-23.6c19.2-29.1 50.3-45.1 87.8-45.1h.8c62.6 .4 99.9 39.5 103.7 107.7l-.2 .2zm-156 68.8c1.3 25.1 28.4 36.8 54.6 35.3c25.6-1.4 54.6-11.4 59.5-73.2c-13.2-2.9-27.8-4.4-43.4-4.4c-4.8 0-9.6 .1-14.4 .4c-42.9 2.4-57.2 23.2-56.2 41.8l-.1 .1z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2025 QuantHustle. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const targetPage = document.getElementById(pageId + '-page');
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            
+            // Simple validation
+            if (!name || !email) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+
+            // Store user data (in real implementation, this would be sent to server)
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userEmail', email);
+            
+            // Show thank you page
+            //showPage('thankyou');
+            
+            // Reset form
+            form.reset();
+        }
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const menuButton = document.querySelector('.md\\:hidden button');
+                
+                if (mobileMenu.classList.contains('active') && 
+                    !mobileMenu.contains(event.target) && 
+                    !menuButton.contains(event.target)) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
